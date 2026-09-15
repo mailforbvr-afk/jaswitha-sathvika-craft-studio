@@ -142,35 +142,31 @@ Then set `NEXT_PUBLIC_USE_DEMO_DATA=false` in `.env.local`.
 
 ## 11. Deploy to Cloudflare
 
-Local development uses normal Next.js (`npm run dev`). Cloudflare hosting uses the OpenNext adapter.
-
-When you are ready to put the site online:
-
-1. Push this project to GitHub.
-2. Create a Cloudflare account.
-3. In this folder:
+Local development still uses normal Next.js:
 
 ```bash
-npm install @opennextjs/cloudflare wrangler --save-dev
-npx @opennextjs/cloudflare migrate
+npm run dev
 ```
 
-4. Add the same environment variables in Cloudflare:
-   - Workers / Pages project → Settings → Variables and Secrets
-   - Add `NEXT_PUBLIC_SUPABASE_URL`
-   - Add `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-   - Add `NEXT_PUBLIC_WHATSAPP_NUMBER`
-   - Add `NEXT_PUBLIC_USE_DEMO_DATA=false`
-5. Deploy:
+Cloudflare Workers uses the OpenNext adapter. A normal `npm run build` only creates Next.js output. Cloudflare also needs `.open-next/worker.js`.
+
+In the Cloudflare dashboard, set:
+
+- **Build command:** `npm run cf:build`
+- **Deploy command:** `npx wrangler deploy`
+
+Or deploy from this folder after a GitHub push is not required:
 
 ```bash
 npm run deploy
 ```
 
-Or connect the GitHub repo in the Cloudflare dashboard and use:
+Add the same environment variables in Cloudflare Workers → Settings → Variables and Secrets:
 
-- Build command: `npx @opennextjs/cloudflare build`
-- Deploy command: `npx @opennextjs/cloudflare deploy`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_WHATSAPP_NUMBER`
+- `NEXT_PUBLIC_USE_DEMO_DATA=false`
 
 This does **not** need a computer left running. Cloudflare serves the website.
 
