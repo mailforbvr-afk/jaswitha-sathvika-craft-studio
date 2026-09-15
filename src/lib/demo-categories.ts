@@ -1,0 +1,66 @@
+import type { Category } from "@/lib/supabase/types";
+
+const now = "2026-01-01T00:00:00.000Z";
+
+export const DEMO_CATEGORIES: Category[] = [
+  {
+    id: "demo-cat-bracelets",
+    name: "Bracelets",
+    slug: "bracelets",
+    icon: "📿",
+    display_order: 10,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "demo-cat-flowers",
+    name: "Flowers",
+    slug: "flowers",
+    icon: "🌸",
+    display_order: 20,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "demo-cat-bouquets",
+    name: "Bouquets",
+    slug: "bouquets",
+    icon: "💐",
+    display_order: 30,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "demo-cat-keychains",
+    name: "Keychains",
+    slug: "keychains",
+    icon: "🔑",
+    display_order: 40,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "demo-cat-magnets",
+    name: "Magnets",
+    slug: "magnets",
+    icon: "🧲",
+    display_order: 50,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "demo-cat-other",
+    name: "Other",
+    slug: "other",
+    icon: "🎨",
+    display_order: 60,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+];

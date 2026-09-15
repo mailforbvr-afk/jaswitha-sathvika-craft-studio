@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Demo flower bouquet illustration">
+  <rect width="640" height="480" fill="#F7F3FF"/>
+  <text x="40" y="52" font-size="22" fill="#9A5A78" font-family="Arial, sans-serif">DEMO SAMPLE</text>
+  <path d="M250 430 L320 230 L390 430 Z" fill="#E56B93"/>
+  <rect x="312" y="220" width="16" height="120" fill="#3EA36A"/>
+  <rect x="278" y="230" width="12" height="110" fill="#67C587"/>
+  <rect x="350" y="236" width="12" height="104" fill="#67C587"/>
+  <circle cx="250" cy="190" r="38" fill="#F4B8CC"/>
+  <circle cx="320" cy="160" r="42" fill="#CBB6EA"/>
+  <circle cx="390" cy="190" r="38" fill="#B7DFF5"/>
+  <circle cx="290" cy="220" r="30" fill="#FFE08A"/>
+  <circle cx="350" cy="220" r="30" fill="#C6EAD6"/>
+</svg>

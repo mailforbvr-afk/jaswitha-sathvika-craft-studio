@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Demo fridge magnet illustration">
+  <rect width="640" height="480" fill="#F3FBFF"/>
+  <text x="40" y="52" font-size="22" fill="#9A5A78" font-family="Arial, sans-serif">DEMO SAMPLE</text>
+  <rect x="170" y="110" width="300" height="260" rx="36" fill="white" stroke="#B7DFF5" stroke-width="10"/>
+  <rect x="200" y="150" width="240" height="140" rx="20" fill="#C6EAD6"/>
+  <circle cx="250" cy="220" r="28" fill="#FFE08A"/>
+  <path d="M300 250 L430 190 L430 270 Z" fill="#4EA4D9"/>
+  <circle cx="230" cy="140" r="14" fill="#E56B93"/>
+  <circle cx="410" cy="140" r="14" fill="#8B6CC0"/>
+</svg>

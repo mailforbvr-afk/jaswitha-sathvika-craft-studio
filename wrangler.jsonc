@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+  "name": "little-craft-studio",
+  "compatibility_date": "2025-09-23",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}

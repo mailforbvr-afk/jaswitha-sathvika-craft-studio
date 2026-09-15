@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Demo pipe-cleaner flower illustration">
+  <rect width="640" height="480" fill="#FFF8F4"/>
+  <text x="40" y="52" font-size="22" fill="#9A5A78" font-family="Arial, sans-serif">DEMO SAMPLE</text>
+  <rect x="312" y="250" width="16" height="160" rx="8" fill="#3EA36A"/>
+  <circle cx="250" cy="210" r="52" fill="#F4B8CC"/>
+  <circle cx="390" cy="210" r="52" fill="#CBB6EA"/>
+  <circle cx="270" cy="300" r="52" fill="#B7DFF5"/>
+  <circle cx="370" cy="300" r="52" fill="#FFE08A"/>
+  <circle cx="320" cy="250" r="42" fill="#FFD36A"/>
+</svg>

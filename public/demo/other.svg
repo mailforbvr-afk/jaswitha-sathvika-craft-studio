@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Demo mixed craft illustration">
+  <rect width="640" height="480" fill="#F4FFF8"/>
+  <text x="40" y="52" font-size="22" fill="#9A5A78" font-family="Arial, sans-serif">DEMO SAMPLE</text>
+  <circle cx="220" cy="230" r="70" fill="#F4B8CC"/>
+  <rect x="300" y="170" width="150" height="150" rx="28" fill="#B7DFF5"/>
+  <polygon points="320,340 400,200 480,340" fill="#FFE08A"/>
+  <circle cx="400" cy="150" r="28" fill="#CBB6EA"/>
+</svg>

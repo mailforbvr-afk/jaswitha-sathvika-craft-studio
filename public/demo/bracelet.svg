@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Demo beaded bracelet illustration">
+  <rect width="640" height="480" fill="#FFF6FB"/>
+  <text x="40" y="52" font-size="22" fill="#9A5A78" font-family="Arial, sans-serif">DEMO SAMPLE</text>
+  <ellipse cx="320" cy="250" rx="190" ry="78" fill="none" stroke="#E56B93" stroke-width="18"/>
+  <circle cx="150" cy="250" r="22" fill="#F4B8CC"/>
+  <circle cx="200" cy="198" r="22" fill="#B7DFF5"/>
+  <circle cx="270" cy="176" r="22" fill="#FFE08A"/>
+  <circle cx="350" cy="176" r="22" fill="#C6EAD6"/>
+  <circle cx="420" cy="198" r="22" fill="#CBB6EA"/>
+  <circle cx="490" cy="250" r="22" fill="#E56B93"/>
+  <circle cx="430" cy="312" r="22" fill="#B7DFF5"/>
+  <circle cx="350" cy="330" r="22" fill="#FFE08A"/>
+  <circle cx="270" cy="330" r="22" fill="#C6EAD6"/>
+  <circle cx="200" cy="312" r="22" fill="#CBB6EA"/>
+</svg>

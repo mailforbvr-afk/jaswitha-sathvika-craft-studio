@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Little Craft Studio">
+  <rect width="64" height="64" rx="16" fill="#F4B8CC"/>
+  <circle cx="22" cy="28" r="8" fill="#FFE08A"/>
+  <circle cx="42" cy="26" r="7" fill="#B7DFF5"/>
+  <circle cx="32" cy="40" r="7" fill="#C6EAD6"/>
+  <path d="M20 18c4-6 12-6 16 0" fill="none" stroke="#8B6CC0" stroke-width="3" stroke-linecap="round"/>
+</svg>
