@@ -14,8 +14,8 @@ type ProductCardProps = {
 
 export function ProductCard({ product, featured = false, studioName = BRAND.studioName }: ProductCardProps) {
   return (
-    <article className="dream-card flex h-full flex-col overflow-hidden">
-      <div className={`relative bg-cream-dark ${featured ? "aspect-[4/5] sm:aspect-[5/6]" : "aspect-square"}`}>
+    <article className="dream-card flex h-full flex-col overflow-hidden p-2.5 sm:p-3">
+      <div className={`relative overflow-hidden rounded-[1.4rem] bg-cream-dark ${featured ? "aspect-[4/5] sm:aspect-[5/6]" : "aspect-square"}`}>
         {product.image_url ? (
           <Image
             src={product.image_url}
@@ -32,15 +32,18 @@ export function ProductCard({ product, featured = false, studioName = BRAND.stud
             <span className="sr-only">No photo yet for {product.name}</span>
           </div>
         )}
-        <p className="absolute left-2 top-2 inline-flex max-w-[calc(100%-1rem)] items-center rounded-full bg-white/92 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wide text-pink-deep shadow-soft">
+        <p className="absolute left-2 top-2 inline-flex max-w-[calc(100%-1rem)] items-center rounded-full bg-white/92 px-2.5 py-1 text-[0.68rem] font-bold text-pink-deep shadow-soft">
           <span aria-hidden="true" className="mr-1">
             {product.category ? categoryDisplayIcon(product.category) : "✨"}
           </span>
           <span className="truncate">{categoryLabel(product.category)}</span>
         </p>
       </div>
-      <div className="flex flex-1 flex-col gap-1.5 p-3 sm:p-4">
+      <div className="flex flex-1 flex-col gap-1.5 p-2 sm:p-3">
         <h3 className="font-display text-[0.98rem] leading-snug text-ink sm:text-lg">{product.name}</h3>
+        {featured && product.description ? (
+          <p className="line-clamp-2 text-sm leading-5 text-ink-soft">{product.description}</p>
+        ) : null}
         <p className="font-display text-lg text-pink-deep sm:text-xl">{formatPriceInr(product.price)}</p>
         <p className="inline-flex items-center gap-2 text-xs font-bold text-mint-deep">
           <span aria-hidden="true">🟢</span>

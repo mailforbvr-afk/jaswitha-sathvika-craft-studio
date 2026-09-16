@@ -15,23 +15,23 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "Jaswitha & Sathvika Little Craft Studio | Little Creations, Made with Love",
+  title: "Little Arts | Handmade with Love",
   description:
-    "Little hands • Big imagination • Handmade with love. Explore handmade bracelets, flowers, bouquets, keychains, magnets and creative crafts by Jaswitha & Sathvika.",
+    "Little hands • Big imagination • Handmade with love. Explore handmade crafts by Jaswitha & Sathvika.",
   metadataBase: new URL("https://littlearts.mailforbvr.workers.dev"),
   openGraph: {
-    title: "Jaswitha & Sathvika Little Craft Studio | Little Creations, Made with Love",
+    title: "Little Arts | Handmade with Love",
     description:
-      "Little hands • Big imagination • Handmade with love. Explore handmade bracelets, flowers, bouquets, keychains, magnets and creative crafts by Jaswitha & Sathvika.",
+      "Little hands • Big imagination • Handmade with love. Explore handmade crafts by Jaswitha & Sathvika.",
     type: "website",
     locale: "en_IN",
-    siteName: "Jaswitha & Sathvika Little Craft Studio",
+    siteName: "Little Arts",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jaswitha & Sathvika Little Craft Studio | Little Creations, Made with Love",
+    title: "Little Arts | Handmade with Love",
     description:
-      "Little hands • Big imagination • Handmade with love. Explore handmade bracelets, flowers, bouquets, keychains, magnets and creative crafts by Jaswitha & Sathvika.",
+      "Little hands • Big imagination • Handmade with love. Explore handmade crafts by Jaswitha & Sathvika.",
   },
 };
 

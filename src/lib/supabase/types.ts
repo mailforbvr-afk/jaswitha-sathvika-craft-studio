@@ -90,6 +90,7 @@ export type SiteSettings = {
   story_card_1_image_url: string | null;
   story_card_2_image_url: string | null;
   story_card_3_image_url: string | null;
+  logo_url: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -140,6 +141,7 @@ export type SiteSettingsInput = {
   story_card_1_image_url: string | null;
   story_card_2_image_url: string | null;
   story_card_3_image_url: string | null;
+  logo_url: string | null;
 };
 
 export type Database = {

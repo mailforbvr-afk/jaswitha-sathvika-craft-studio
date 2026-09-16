@@ -1,21 +1,26 @@
 export const BRAND = {
   names: "Jaswitha & Sathvika",
-  studio: "Little Craft Studio",
-  studioName: "Jaswitha & Sathvika Little Craft Studio",
-  title: "Little Creations, Made with Love",
+  studio: "Little Arts",
+  studioName: "Little Arts",
+  title: "Welcome to Our\nCreative World 💗",
   tagline: "Little hands • Big imagination • Handmade with love ❤️",
   supportingText:
     "Handmade creations made with lots of imagination, creativity and love.",
   contactHeading: "Interested in any of our creations?",
   contactMessage: "Send us a WhatsApp message!",
   aboutText:
-    "Welcome to Jaswitha & Sathvika Little Craft Studio, a little space filled with handmade creations, imagination and love. Every creation is made with care and lots of creativity.",
-  heroBadge: "Handmade with little hands",
+    "Welcome to Little Arts, a little space filled with handmade creations, imagination and love by Jaswitha & Sathvika. Every creation is made with care and lots of creativity.",
+  heroBadge: "❤️ Handmade with little hands",
   heroPrimaryButton: "✨ Explore Our Crafts",
   heroSecondaryButton: "💬 Chat on WhatsApp",
   heroVisualTitle: "Made by Little Hands",
-  heroVisualCaption: "Little crafts, made with care",
-  collectionsEyebrow: "Collections",
+  heroVisualCaption: "Made by Little Hands ♡",
+  heroHighlights: [
+    { icon: "♡", title: "Handmade", text: "with Love" },
+    { icon: "🌿", title: "Unique", text: "Creations" },
+    { icon: "⭐", title: "Made by", text: "Little Hands" },
+  ],
+  collectionsEyebrow: "🌸 Our Collections",
   collectionsTitle: "Little categories, lots of colour",
   collectionsDescription: "Tap a category to see handmade pieces made with little hands.",
   featuredEyebrow: "Favorites",
@@ -41,7 +46,28 @@ export const BRAND = {
   contactButtonText: "Chat on WhatsApp",
   footerCopyright: "Handmade with love by Jaswitha & Sathvika.",
   heroImageAlt: "Jaswitha and Sathvika",
+  logoAlt: "Little Arts logo",
 };
+
+const LEGACY_PUBLIC_COPY = new Set([
+  "jaswitha & sathvika little craft studio",
+  "little craft studio",
+  "little creations, made with love",
+  "handmade with little hands",
+  "collections",
+  "little crafts, made with care",
+]);
+
+export function designedPublicText(
+  saved: string | null | undefined,
+  designed: string,
+): string {
+  const value = saved?.trim() ?? "";
+  if (!value) return designed;
+  if (LEGACY_PUBLIC_COPY.has(value.toLowerCase())) return designed;
+  if (/little creations/i.test(value)) return designed;
+  return value;
+}
 
 export function getSupabaseUrl(): string {
   return process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() ?? "";

@@ -27,7 +27,7 @@ export function fallbackSiteSettings(): PublicSiteSettings {
     email: null,
     theme: DEFAULT_THEME_ID,
     header_studio_name: BRAND.studioName,
-    header_tagline: BRAND.studio,
+    header_tagline: BRAND.names,
     hero_badge: BRAND.heroBadge,
     hero_description: BRAND.supportingText,
     hero_primary_button: BRAND.heroPrimaryButton,
@@ -62,6 +62,7 @@ export function fallbackSiteSettings(): PublicSiteSettings {
     story_card_1_image_url: null,
     story_card_2_image_url: null,
     story_card_3_image_url: null,
+    logo_url: null,
   };
 }
 
@@ -145,6 +146,7 @@ export function normalizeSiteSettingsInput(input: SiteSettingsInput): SiteSettin
     story_card_1_image_url: emptyToNull(input.story_card_1_image_url ?? ""),
     story_card_2_image_url: emptyToNull(input.story_card_2_image_url ?? ""),
     story_card_3_image_url: emptyToNull(input.story_card_3_image_url ?? ""),
+    logo_url: emptyToNull(input.logo_url ?? ""),
   };
 }
 
@@ -209,6 +211,7 @@ export function toPublicSettings(row: Partial<SiteSettings> | null | undefined):
     story_card_1_image_url: emptyToNull(row.story_card_1_image_url ?? ""),
     story_card_2_image_url: emptyToNull(row.story_card_2_image_url ?? ""),
     story_card_3_image_url: emptyToNull(row.story_card_3_image_url ?? ""),
+    logo_url: emptyToNull(row.logo_url ?? ""),
   };
 }
 
@@ -294,11 +297,13 @@ export async function updateSiteImageUrl(
   const patch: Partial<SiteSettingsInput> =
     field === "hero_image_url"
       ? { hero_image_url: imageUrl }
-      : field === "story_card_1_image_url"
-        ? { story_card_1_image_url: imageUrl }
-        : field === "story_card_2_image_url"
-          ? { story_card_2_image_url: imageUrl }
-          : { story_card_3_image_url: imageUrl };
+      : field === "logo_url"
+        ? { logo_url: imageUrl }
+        : field === "story_card_1_image_url"
+          ? { story_card_1_image_url: imageUrl }
+          : field === "story_card_2_image_url"
+            ? { story_card_2_image_url: imageUrl }
+            : { story_card_3_image_url: imageUrl };
 
   const { data, error } = await supabase
     .from("site_settings")

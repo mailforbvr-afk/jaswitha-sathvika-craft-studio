@@ -11,6 +11,7 @@ type SiteImageFieldProps = {
   busy: boolean;
   onSelectFile: (file: File) => void;
   onRemove: () => void;
+  actionNoun?: "Photo" | "Logo";
 };
 
 export function SiteImageField({
@@ -21,6 +22,7 @@ export function SiteImageField({
   busy,
   onSelectFile,
   onRemove,
+  actionNoun = "Photo",
 }: SiteImageFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const photo = imageUrl?.trim() ?? "";
@@ -39,7 +41,7 @@ export function SiteImageField({
           <img src={photo} alt={alt} className="mx-auto max-h-56 w-full object-contain" />
         ) : (
           <div className="flex h-36 items-center justify-center px-4 text-center text-sm font-semibold text-ink-soft">
-            No photo yet
+            No {actionNoun.toLowerCase()} yet
           </div>
         )}
       </div>
@@ -65,7 +67,7 @@ export function SiteImageField({
           onClick={() => inputRef.current?.click()}
           className="rounded-full bg-purple-deep px-4 py-2 text-sm font-bold text-white hover:bg-ink disabled:opacity-60"
         >
-          {busy ? "Uploading…" : photo ? "Replace Photo" : "Upload Photo"}
+          {busy ? "Uploading…" : photo ? `Replace ${actionNoun}` : `Upload ${actionNoun}`}
         </button>
         {photo ? (
           <button
@@ -74,7 +76,7 @@ export function SiteImageField({
             onClick={onRemove}
             className="rounded-full bg-white px-4 py-2 text-sm font-bold text-ink hover:bg-cream disabled:opacity-60"
           >
-            Remove Photo
+            Remove {actionNoun}
           </button>
         ) : null}
       </div>

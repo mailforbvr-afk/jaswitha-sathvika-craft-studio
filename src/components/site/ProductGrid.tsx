@@ -40,7 +40,7 @@ export function ProductGrid({
       aria-labelledby="creations-heading"
     >
       <div className="mb-8 text-center">
-        <p className="section-kicker">{settings.gallery_eyebrow}</p>
+        <p className="section-badge">{settings.gallery_eyebrow}</p>
         <h2 id="creations-heading" className="section-title">
           {settings.gallery_title}
         </h2>

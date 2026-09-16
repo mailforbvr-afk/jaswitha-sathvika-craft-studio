@@ -18,7 +18,7 @@ export function AdminNav({ current, onSignOut }: AdminNavProps) {
     <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p className="text-sm font-bold text-purple-deep">{BRAND.names}</p>
-        <h1 className="font-display text-3xl text-ink">Little Craft Studio Admin</h1>
+        <h1 className="font-display text-3xl text-ink">Little Arts Admin</h1>
       </div>
       <nav className="flex flex-wrap gap-2" aria-label="Admin">
         {NAV_ITEMS.map((item) => (

@@ -159,3 +159,4 @@ alter table public.site_settings add column if not exists hero_image_url text;
 alter table public.site_settings add column if not exists story_card_1_image_url text;
 alter table public.site_settings add column if not exists story_card_2_image_url text;
 alter table public.site_settings add column if not exists story_card_3_image_url text;
+alter table public.site_settings add column if not exists logo_url text;

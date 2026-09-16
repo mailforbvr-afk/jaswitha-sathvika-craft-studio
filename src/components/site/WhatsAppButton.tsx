@@ -13,7 +13,7 @@ const variantClasses = {
   soft:
     "bg-white text-whatsapp border border-mint hover:bg-mint/40 focus-visible:outline-whatsapp",
   header:
-    "bg-whatsapp text-white hover:bg-whatsapp-hover focus-visible:outline-whatsapp",
+    "border border-pink-deep bg-white text-pink-deep hover:bg-petal/50 focus-visible:outline-pink-deep",
 };
 
 export function WhatsAppButton({

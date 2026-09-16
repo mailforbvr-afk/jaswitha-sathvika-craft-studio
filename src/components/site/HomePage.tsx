@@ -19,6 +19,7 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Journey } from "@/components/site/Journey";
 import { ProductGrid } from "@/components/site/ProductGrid";
+import { SectionWave } from "@/components/site/SectionWave";
 
 function initialPublicProducts(): Product[] {
   if (!shouldUseDemoData()) return [];
@@ -98,7 +99,16 @@ export function HomePage() {
       <Header settings={settings} />
       <main>
         <Hero settings={settings} products={products} categories={categories} />
-        <Categories categories={categories} settings={settings} onSelect={selectCategory} />
+        <div className="collections-band relative">
+          <Categories
+            categories={categories}
+            products={products}
+            settings={settings}
+            onSelect={selectCategory}
+            decorations={getTheme(settings.theme).decorations}
+          />
+          <SectionWave className="collections-wave" />
+        </div>
         <FeaturedCreations products={products} settings={settings} />
         <ProductGrid
           products={products}
