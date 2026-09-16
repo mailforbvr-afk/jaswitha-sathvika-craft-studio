@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { categoryLabel, fetchAdminCategories } from "@/lib/categories";
-import { BRAND, isSupabaseConfigured } from "@/lib/config";
+import { isSupabaseConfigured } from "@/lib/config";
 import { formatPriceInr, parsePrice, statusLabel } from "@/lib/format";
 import { deleteProductImage } from "@/lib/image";
 import {
@@ -16,6 +15,7 @@ import {
 } from "@/lib/products";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Category, Product } from "@/lib/supabase/types";
+import { AdminNav } from "@/components/admin/AdminNav";
 import { CategoryManager } from "@/components/admin/CategoryManager";
 import { ProductForm, type ProductFormValues } from "@/components/admin/ProductForm";
 import { ProductPreview } from "@/components/admin/ProductPreview";
@@ -164,20 +164,7 @@ export function AdminDashboard() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-bold text-purple-deep">{BRAND.names}</p>
-          <h1 className="font-display text-3xl text-ink">Little Craft Studio Admin</h1>
-        </div>
-        <div className="flex gap-2">
-          <Link href="/" className="rounded-full bg-white px-4 py-2 text-sm font-bold">
-            View website
-          </Link>
-          <button type="button" onClick={() => void signOut()} className="rounded-full bg-white px-4 py-2 text-sm font-bold">
-            Sign out
-          </button>
-        </div>
-      </div>
+      <AdminNav current="products" onSignOut={() => void signOut()} />
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         {[

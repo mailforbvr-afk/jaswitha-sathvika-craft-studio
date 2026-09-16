@@ -1,26 +1,69 @@
-export function Journey() {
+import { SitePhoto } from "@/components/site/SitePhoto";
+import type { PublicSiteSettings } from "@/lib/site-settings";
+
+type JourneyProps = {
+  settings: PublicSiteSettings;
+};
+
+const STORY_CARD_MOTIFS = ["❤️", "✨", "🌸"];
+const STORY_CARD_BACKGROUNDS = [
+  "from-petal/70 to-lilac/50",
+  "from-lilac/70 to-cloud/50",
+  "from-mint/70 to-petal/40",
+];
+
+export function Journey({ settings }: JourneyProps) {
+  const cards = [
+    {
+      title: settings.story_card_1_title,
+      text: settings.story_card_1_text,
+      imageUrl: settings.story_card_1_image_url,
+    },
+    {
+      title: settings.story_card_2_title,
+      text: settings.story_card_2_text,
+      imageUrl: settings.story_card_2_image_url,
+    },
+    {
+      title: settings.story_card_3_title,
+      text: settings.story_card_3_text,
+      imageUrl: settings.story_card_3_image_url,
+    },
+  ];
+
   return (
-    <section className="dream-reveal mx-auto max-w-6xl px-4 py-8 sm:px-6" aria-labelledby="journey-heading">
-      <div className="rounded-[2rem] border border-dashed border-petal/70 bg-white/80 p-6 sm:p-8">
-        <h2 id="journey-heading" className="font-display text-3xl text-ink">
-          Every creation has a story ✨
+    <section className="dream-reveal mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14" aria-labelledby="journey-heading">
+      <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-card-border)] bg-[var(--color-card)]/80 p-6 shadow-soft sm:p-8">
+        <h2 id="journey-heading" className="section-title mt-0">
+          {settings.story_section_title}
         </h2>
-        <p className="mt-4 max-w-3xl leading-7 text-ink-soft">
-          This website is about creativity, learning and enjoying the process of making things. Some days it is
-          a bracelet. Some days it is a tiny flower. The joy is in trying, practising and making something with
-          their own hands.
+        <p className="mt-4 max-w-3xl whitespace-pre-wrap text-base leading-8 text-ink-soft">
+          {settings.story_section_text}
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          {["Photographs coming soon", "Craft table moments later", "Optional studio photos later"].map(
-            (label) => (
-              <div
-                key={label}
-                className="flex aspect-[4/3] items-center justify-center rounded-3xl bg-gradient-to-br from-cream to-lilac/40 text-center text-sm font-bold text-ink-soft"
-              >
-                {label} 📷
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          {cards.map((card, index) => (
+            <article key={`${card.title}-${index}`} className="dream-card overflow-hidden">
+              <div className={`relative aspect-[4/3] bg-gradient-to-br ${STORY_CARD_BACKGROUNDS[index]}`}>
+                <SitePhoto
+                  src={card.imageUrl}
+                  alt={card.title}
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  objectFit="cover"
+                  fallback={
+                    <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+                      <span className="text-4xl" aria-hidden="true">
+                        {STORY_CARD_MOTIFS[index]}
+                      </span>
+                    </div>
+                  }
+                />
               </div>
-            ),
-          )}
+              <div className="p-4 sm:p-5">
+                <h3 className="font-display text-xl leading-snug text-ink">{card.title}</h3>
+                <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-ink-soft">{card.text}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

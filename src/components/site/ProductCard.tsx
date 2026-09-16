@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { categoryDisplayIcon, categoryLabel } from "@/lib/categories";
+import { BRAND } from "@/lib/config";
 import { formatPriceInr, statusLabel } from "@/lib/format";
 import { productWhatsAppUrl } from "@/lib/whatsapp";
 import type { Product } from "@/lib/supabase/types";
@@ -8,12 +9,13 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 type ProductCardProps = {
   product: Product;
   featured?: boolean;
+  studioName?: string;
 };
 
-export function ProductCard({ product, featured = false }: ProductCardProps) {
+export function ProductCard({ product, featured = false, studioName = BRAND.studioName }: ProductCardProps) {
   return (
-    <article className="dream-card flex h-full flex-col overflow-hidden rounded-[1.7rem] bg-white">
-      <div className={`relative bg-cream-dark ${featured ? "aspect-[4/5] sm:aspect-square" : "aspect-square"}`}>
+    <article className="dream-card flex h-full flex-col overflow-hidden">
+      <div className={`relative bg-cream-dark ${featured ? "aspect-[4/5] sm:aspect-[5/6]" : "aspect-square"}`}>
         {product.image_url ? (
           <Image
             src={product.image_url}
@@ -30,23 +32,21 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
             <span className="sr-only">No photo yet for {product.name}</span>
           </div>
         )}
-      </div>
-      <div className="flex flex-1 flex-col gap-2 p-3 sm:p-4">
-        <p className="inline-flex w-fit items-center rounded-full bg-cream px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-pink-deep">
+        <p className="absolute left-2 top-2 inline-flex max-w-[calc(100%-1rem)] items-center rounded-full bg-white/92 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wide text-pink-deep shadow-soft">
           <span aria-hidden="true" className="mr-1">
             {product.category ? categoryDisplayIcon(product.category) : "✨"}
           </span>
-          {categoryLabel(product.category)}
+          <span className="truncate">{categoryLabel(product.category)}</span>
         </p>
-        <h3 className="font-display text-base leading-snug text-ink sm:text-xl">{product.name}</h3>
-        <p className="mt-auto pt-1 font-display text-xl text-pink-deep sm:text-2xl">
-          {formatPriceInr(product.price)}
-        </p>
-        <p className="inline-flex items-center gap-2 text-xs font-bold text-mint-deep sm:text-sm">
+      </div>
+      <div className="flex flex-1 flex-col gap-1.5 p-3 sm:p-4">
+        <h3 className="font-display text-[0.98rem] leading-snug text-ink sm:text-lg">{product.name}</h3>
+        <p className="font-display text-lg text-pink-deep sm:text-xl">{formatPriceInr(product.price)}</p>
+        <p className="inline-flex items-center gap-2 text-xs font-bold text-mint-deep">
           <span aria-hidden="true">🟢</span>
           <span>{statusLabel(product.status)}</span>
         </p>
-        <WhatsAppButton href={productWhatsAppUrl(product)} className="mt-1 w-full px-3 py-2 text-xs sm:text-sm">
+        <WhatsAppButton href={productWhatsAppUrl(product, studioName)} className="mt-auto min-h-10 w-full px-3 py-2 text-xs sm:text-sm">
           💬 I&apos;m Interested
         </WhatsAppButton>
       </div>

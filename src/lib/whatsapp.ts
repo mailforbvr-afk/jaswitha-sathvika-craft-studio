@@ -11,24 +11,30 @@ export function buildWhatsAppUrl(message: string): string | null {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
-export function generalEnquiryMessage(): string {
-  return `Hi! I would like to know more about the handmade creations from ${BRAND.names} ${BRAND.studio}.`;
+export function generalEnquiryMessage(studioName = BRAND.studioName): string {
+  return `Hi! I would like to know more about the handmade creations from ${studioName}.`;
 }
 
-export function productInterestMessage(product: {
-  name: string;
-  price: number;
-}): string {
-  return `Hi! I am interested in the ${product.name} from ${BRAND.names} ${BRAND.studio}. Price: ${formatPriceInr(product.price)}. Is it available?`;
+export function productInterestMessage(
+  product: {
+    name: string;
+    price: number;
+  },
+  studioName = BRAND.studioName,
+): string {
+  return `Hi! I am interested in the ${product.name} from ${studioName}. Price: ${formatPriceInr(product.price)}. Is it available?`;
 }
 
-export function productWhatsAppUrl(product: {
-  name: string;
-  price: number;
-}): string | null {
-  return buildWhatsAppUrl(productInterestMessage(product));
+export function productWhatsAppUrl(
+  product: {
+    name: string;
+    price: number;
+  },
+  studioName = BRAND.studioName,
+): string | null {
+  return buildWhatsAppUrl(productInterestMessage(product, studioName));
 }
 
-export function contactWhatsAppUrl(): string | null {
-  return buildWhatsAppUrl(generalEnquiryMessage());
+export function contactWhatsAppUrl(studioName = BRAND.studioName): string | null {
+  return buildWhatsAppUrl(generalEnquiryMessage(studioName));
 }

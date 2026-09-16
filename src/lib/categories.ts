@@ -4,12 +4,12 @@ import type { Category, CategoryInput } from "@/lib/supabase/types";
 export type CategoryFilter = "ALL" | string;
 
 export const CATEGORY_ACCENTS = [
-  "from-[#fde3ee] to-[#f7cfe0]",
-  "from-[#f3e7fb] to-[#ddd0f3]",
-  "from-[#e4f4fc] to-[#cfe8f7]",
-  "from-[#e7f8ef] to-[#cfeee0]",
-  "from-[#fff4d6] to-[#ffe9a8]",
-  "from-[#fde8f3] to-[#f3e7fb]",
+  "from-[var(--theme-cat-1-from)] to-[var(--theme-cat-1-to)]",
+  "from-[var(--theme-cat-2-from)] to-[var(--theme-cat-2-to)]",
+  "from-[var(--theme-cat-3-from)] to-[var(--theme-cat-3-to)]",
+  "from-[var(--theme-cat-4-from)] to-[var(--theme-cat-4-to)]",
+  "from-[var(--theme-cat-5-from)] to-[var(--theme-cat-5-to)]",
+  "from-[var(--theme-cat-6-from)] to-[var(--theme-cat-6-to)]",
 ];
 
 export function categoryAccent(index: number): string {

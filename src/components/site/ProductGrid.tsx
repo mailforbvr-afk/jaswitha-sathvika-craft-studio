@@ -1,4 +1,5 @@
 import { categoryDisplayIcon, matchesCategoryFilter, type CategoryFilter } from "@/lib/categories";
+import type { PublicSiteSettings } from "@/lib/site-settings";
 import type { Category, Product } from "@/lib/supabase/types";
 import { ProductCard } from "@/components/site/ProductCard";
 
@@ -11,6 +12,7 @@ type ProductGridProps = {
   onSearchChange: (value: string) => void;
   loading: boolean;
   error: string | null;
+  settings: PublicSiteSettings;
 };
 
 export function ProductGrid({
@@ -22,6 +24,7 @@ export function ProductGrid({
   onSearchChange,
   loading,
   error,
+  settings,
 }: ProductGridProps) {
   const query = search.trim().toLowerCase();
   const visible = products.filter((product) => {
@@ -33,20 +36,18 @@ export function ProductGrid({
   return (
     <section
       id="creations"
-      className="dream-reveal mx-auto max-w-6xl px-4 py-10 sm:px-6"
+      className="dream-reveal mx-auto max-w-6xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-14"
       aria-labelledby="creations-heading"
     >
       <div className="mb-8 text-center">
-        <p className="text-sm font-bold uppercase tracking-[0.18em] text-pink-deep">Gallery</p>
-        <h2 id="creations-heading" className="mt-2 font-display text-3xl text-ink sm:text-4xl">
-          All our crafts
+        <p className="section-kicker">{settings.gallery_eyebrow}</p>
+        <h2 id="creations-heading" className="section-title">
+          {settings.gallery_title}
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-ink-soft">
-          Every piece is handmade, one of a kind, and shared here so you can enjoy looking — and message us if something makes you smile.
-        </p>
+        <p className="section-copy whitespace-pre-wrap">{settings.gallery_description}</p>
       </div>
 
-      <div className="mb-6 flex flex-col gap-4">
+      <div className="mb-7 flex flex-col gap-4">
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" role="group" aria-label="Filter by category">
           <FilterButton selected={filter === "ALL"} onClick={() => onFilterChange("ALL")} label="All" />
           {categories.map((category) => (
@@ -65,21 +66,21 @@ export function ProductGrid({
             value={search}
             onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search by name"
-            className="w-full rounded-full border border-petal/50 bg-white px-4 py-2.5 text-sm text-ink outline-none ring-pink-deep placeholder:text-ink-soft/70 focus:ring-2"
+            className="min-h-11 w-full rounded-full border border-[var(--color-card-border)] bg-white px-4 py-2.5 text-sm text-ink outline-none ring-pink-deep placeholder:text-ink-soft/70 focus:ring-2"
           />
         </label>
       </div>
 
       {loading ? (
-        <p className="rounded-[1.7rem] bg-white px-6 py-12 text-center text-ink-soft">Loading creations…</p>
+        <p className="rounded-[1.7rem] bg-[var(--color-card)] px-6 py-12 text-center text-ink-soft">Loading creations…</p>
       ) : error ? (
-        <p className="rounded-[1.7rem] bg-white px-6 py-12 text-center text-pink-deep">{error}</p>
+        <p className="rounded-[1.7rem] bg-[var(--color-card)] px-6 py-12 text-center text-pink-deep">{error}</p>
       ) : products.length === 0 ? (
-        <p className="rounded-[1.7rem] bg-white px-6 py-12 text-center text-lg font-semibold text-ink-soft">
+        <p className="rounded-[1.7rem] bg-[var(--color-card)] px-6 py-12 text-center text-lg font-semibold text-ink-soft">
           New creations are coming soon! 🎨❤️
         </p>
       ) : visible.length === 0 ? (
-        <p className="rounded-[1.7rem] bg-white px-6 py-12 text-center text-lg font-semibold text-ink-soft">
+        <p className="rounded-[1.7rem] bg-[var(--color-card)] px-6 py-12 text-center text-lg font-semibold text-ink-soft">
           {query
             ? "No creations match that name yet. Try another word! ✨"
             : "No creations in this category yet. Check back soon! 🌈"}
@@ -87,7 +88,7 @@ export function ProductGrid({
       ) : (
         <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
           {visible.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} studioName={settings.studio_name} />
           ))}
         </div>
       )}
@@ -109,7 +110,7 @@ function FilterButton({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-deep ${
+      className={`min-h-10 shrink-0 rounded-full px-4 py-2 text-sm font-bold shadow-soft transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-deep ${
         selected
           ? "bg-pink-deep text-white"
           : "bg-white text-ink-soft hover:bg-petal/50"

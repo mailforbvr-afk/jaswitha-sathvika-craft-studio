@@ -18,18 +18,41 @@
   --color-mint-deep: #3ea36a;
   --color-whatsapp: #128c4b;
   --color-whatsapp-hover: #0d743d;
+  --color-card: #ffffff;
+  --color-card-border: rgba(246, 196, 214, 0.45);
   --shadow-card: 0 14px 32px rgba(168, 92, 126, 0.12);
+  --shadow-card-hover: 0 18px 36px rgba(168, 92, 126, 0.16);
   --shadow-soft: 0 10px 24px rgba(168, 92, 126, 0.1);
+  --radius-card: 1.7rem;
+  --theme-spot-1: rgba(246, 196, 214, 0.55);
+  --theme-spot-2: rgba(221, 208, 243, 0.5);
+  --theme-spot-3: rgba(207, 232, 247, 0.42);
+  --theme-spot-4: rgba(207, 238, 224, 0.35);
+  --theme-spot-5: rgba(255, 233, 168, 0.12);
+  --theme-cat-1-from: #fde3ee;
+  --theme-cat-1-to: #f7cfe0;
+  --theme-cat-2-from: #f3e7fb;
+  --theme-cat-2-to: #ddd0f3;
+  --theme-cat-3-from: #e4f4fc;
+  --theme-cat-3-to: #cfe8f7;
+  --theme-cat-4-from: #e7f8ef;
+  --theme-cat-4-to: #cfeee0;
+  --theme-cat-5-from: #fff4d6;
+  --theme-cat-5-to: #ffe9a8;
+  --theme-cat-6-from: #fde8f3;
+  --theme-cat-6-to: #f3e7fb;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.25rem;
 }
 
 body {
   background-color: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  line-height: 1.6;
 }
 
 h1,
@@ -37,6 +60,51 @@ h2,
 h3,
 .font-display {
   font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.section-kicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-pink-deep);
+}
+
+.section-title {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3vw, 2.45rem);
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+.section-copy {
+  margin-inline: auto;
+  margin-top: 0.75rem;
+  max-width: 38rem;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+.header-bar {
+  background: color-mix(in srgb, var(--color-card) 84%, transparent);
+  box-shadow: 0 10px 28px rgba(74, 44, 69, 0.06);
+}
+
+.hero-photo-mat {
+  border-radius: 2.35rem;
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+  padding: 0.8rem;
+}
+
+.hero-photo-well {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.85rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-cream) 88%, white), var(--color-lilac));
 }
 
 .studio-page {
@@ -44,13 +112,14 @@ h3,
 }
 
 .dream-page {
-  background-color: #fff7fb;
+  overflow-x: hidden;
+  background-color: var(--color-cream);
   background-image:
-    radial-gradient(circle at 8% 6%, rgba(246, 196, 214, 0.55), transparent 26%),
-    radial-gradient(circle at 94% 8%, rgba(221, 208, 243, 0.5), transparent 24%),
-    radial-gradient(circle at 86% 78%, rgba(207, 232, 247, 0.42), transparent 28%),
-    radial-gradient(circle at 12% 86%, rgba(207, 238, 224, 0.35), transparent 22%),
-    radial-gradient(circle at 50% 50%, rgba(255, 233, 168, 0.12), transparent 40%);
+    radial-gradient(circle at 8% 6%, var(--theme-spot-1), transparent 26%),
+    radial-gradient(circle at 94% 8%, var(--theme-spot-2), transparent 24%),
+    radial-gradient(circle at 86% 78%, var(--theme-spot-3), transparent 28%),
+    radial-gradient(circle at 12% 86%, var(--theme-spot-4), transparent 22%),
+    radial-gradient(circle at 50% 50%, var(--theme-spot-5), transparent 40%);
 }
 
 .studio-card {
@@ -59,7 +128,9 @@ h3,
 }
 
 .dream-card {
-  background: #fff;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -67,7 +138,7 @@ h3,
 @media (hover: hover) {
   .dream-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 36px rgba(168, 92, 126, 0.16);
+    box-shadow: var(--shadow-card-hover);
   }
 }
 
