@@ -2,6 +2,7 @@ import Image from "next/image";
 import { categoryDisplayIcon, categoryLabel } from "@/lib/categories";
 import { BRAND } from "@/lib/config";
 import { formatPriceInr, statusLabel } from "@/lib/format";
+import { productDisplayImage } from "@/lib/products";
 import { productWhatsAppUrl } from "@/lib/whatsapp";
 import type { Product } from "@/lib/supabase/types";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
@@ -13,12 +14,13 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ product, featured = false, studioName = BRAND.studioName }: ProductCardProps) {
+  const displayUrl = productDisplayImage(product);
   return (
     <article className="dream-card flex h-full flex-col overflow-hidden p-2.5 sm:p-3">
       <div className={`relative overflow-hidden rounded-[1.4rem] bg-cream-dark ${featured ? "aspect-[4/5] sm:aspect-[5/6]" : "aspect-square"}`}>
-        {product.image_url ? (
+        {displayUrl ? (
           <Image
-            src={product.image_url}
+            src={displayUrl}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

@@ -26,6 +26,8 @@ export type Product = {
   price: number;
   category_id: string;
   image_url: string | null;
+  catalogue_image_url: string | null;
+  use_catalogue_image: boolean;
   status: ProductStatus;
   featured: boolean;
   created_at: string;
@@ -39,6 +41,8 @@ export type ProductInput = {
   price: number;
   category_id: string;
   image_url: string | null;
+  catalogue_image_url: string | null;
+  use_catalogue_image: boolean;
   status: ProductStatus;
   featured: boolean;
 };

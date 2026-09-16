@@ -17,7 +17,7 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Category, Product } from "@/lib/supabase/types";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { CategoryManager } from "@/components/admin/CategoryManager";
-import { ProductForm, type ProductFormValues } from "@/components/admin/ProductForm";
+import { ProductForm, type ProductFormValues, type ProductImageSave } from "@/components/admin/ProductForm";
 import { ProductPreview } from "@/components/admin/ProductPreview";
 
 export function AdminDashboard() {
@@ -76,7 +76,7 @@ export function AdminDashboard() {
     };
   }, [router]);
 
-  async function saveProduct(values: ProductFormValues, imageUrl: string | null): Promise<Product> {
+  async function saveProduct(values: ProductFormValues, images: ProductImageSave): Promise<Product> {
     const price = parsePrice(values.price);
     if (price === null) {
       throw new Error("Please enter a valid price.");
@@ -87,7 +87,9 @@ export function AdminDashboard() {
       description: values.description.trim(),
       price,
       category_id: values.category_id,
-      image_url: imageUrl,
+      image_url: images.imageUrl,
+      catalogue_image_url: images.catalogueImageUrl,
+      use_catalogue_image: images.useCatalogueImage,
       status: values.status,
       featured: values.featured,
     };
@@ -142,6 +144,7 @@ export function AdminDashboard() {
     try {
       await deleteProduct(product.id);
       await deleteProductImage(product.image_url);
+      await deleteProductImage(product.catalogue_image_url);
       setProducts((current) => current.filter((item) => item.id !== product.id));
     } catch {
       setError("Unable to delete the product. Please try again.");
