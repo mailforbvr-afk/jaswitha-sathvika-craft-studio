@@ -10,10 +10,10 @@ export function Contact({ settings }: ContactProps) {
   return (
     <section
       id="contact"
-      className="dream-reveal mx-auto max-w-6xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-14"
+      className="dream-reveal mx-auto max-w-6xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16"
       aria-labelledby="contact-heading"
     >
-      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-petal via-lilac to-mint px-6 py-14 text-center shadow-card sm:px-10">
+      <div className="relative overflow-hidden rounded-[2.2rem] bg-gradient-to-br from-petal via-lilac to-mint px-6 py-14 text-center shadow-card sm:px-10">
         <span className="pointer-events-none absolute left-6 top-6 text-xl opacity-70" aria-hidden="true">
           💌
         </span>
@@ -23,7 +23,7 @@ export function Contact({ settings }: ContactProps) {
         <span className="pointer-events-none absolute bottom-6 left-10 text-lg opacity-70" aria-hidden="true">
           🌸
         </span>
-        <p className="section-kicker">{settings.contact_eyebrow}</p>
+        <p className="section-badge">{settings.contact_eyebrow}</p>
         <h2 id="contact-heading" className="section-title">
           {settings.contact_heading}
         </h2>

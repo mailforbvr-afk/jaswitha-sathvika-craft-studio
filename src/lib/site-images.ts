@@ -6,19 +6,21 @@ import {
 import { optimizeImageFile } from "@/lib/image";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
-export type SiteImageSlot = "hero" | "story-1" | "story-2" | "story-3";
+export type SiteImageSlot = "hero" | "story-1" | "story-2" | "story-3" | "logo";
 
 export type SiteImageUrlField =
   | "hero_image_url"
   | "story_card_1_image_url"
   | "story_card_2_image_url"
-  | "story_card_3_image_url";
+  | "story_card_3_image_url"
+  | "logo_url";
 
 export const SITE_IMAGE_FIELD_BY_SLOT: Record<SiteImageSlot, SiteImageUrlField> = {
   hero: "hero_image_url",
   "story-1": "story_card_1_image_url",
   "story-2": "story_card_2_image_url",
   "story-3": "story_card_3_image_url",
+  logo: "logo_url",
 };
 
 export function validateSiteImageFile(file: File): string | null {
@@ -40,6 +42,7 @@ function extensionForType(type: string): string {
 function storagePathForSlot(slot: SiteImageSlot, extension: string): string {
   const id = crypto.randomUUID();
   if (slot === "hero") return `site/hero/${id}.${extension}`;
+  if (slot === "logo") return `site/logo/${id}.${extension}`;
   if (slot === "story-1") return `site/story/1/${id}.${extension}`;
   if (slot === "story-2") return `site/story/2/${id}.${extension}`;
   return `site/story/3/${id}.${extension}`;

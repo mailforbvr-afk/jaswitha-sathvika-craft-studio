@@ -283,6 +283,16 @@ export function SiteSettingsForm() {
               <Field label="Header Tagline">
                 <input value={values.header_tagline} onChange={(event) => update("header_tagline", event.target.value)} className={inputClassName} />
               </Field>
+              <SiteImageField
+                label="Logo"
+                hint="Shown in the public header and footer. PNG, JPG or WebP, up to 5 MB. If no logo is uploaded, the studio name is shown instead."
+                imageUrl={values.logo_url}
+                alt={BRAND.logoAlt}
+                busy={imageBusy === "logo"}
+                actionNoun="Logo"
+                onSelectFile={(file) => void handleImageUpload("logo", "logo_url", file)}
+                onRemove={() => void handleImageRemove("logo", "logo_url")}
+              />
             </Section>
 
             <Section title="🏠 Hero Section">
@@ -290,7 +300,7 @@ export function SiteSettingsForm() {
                 <input value={values.hero_badge} onChange={(event) => update("hero_badge", event.target.value)} className={inputClassName} />
               </Field>
               <Field label="Main Title">
-                <input value={values.main_title} onChange={(event) => update("main_title", event.target.value)} className={inputClassName} />
+                <textarea rows={2} value={values.main_title} onChange={(event) => update("main_title", event.target.value)} className={inputClassName} />
               </Field>
               <Field label="Tagline">
                 <input value={values.tagline} onChange={(event) => update("tagline", event.target.value)} className={inputClassName} />
