@@ -1,4 +1,64 @@
 export type ProductStatus = "AVAILABLE" | "SOLD";
+export type PaymentMethod = "RAZORPAY" | "UPI";
+export type PaymentStatus = "PENDING" | "PAID" | "VERIFIED" | "FAILED" | "REFUNDED";
+export type FulfilmentStatus = "UNFULFILLED" | "PROCESSING" | "SHIPPED" | "DELIVERED" | "CANCELLED";
+
+export type CommerceSettings = {
+  id: string;
+  razorpay_enabled: boolean;
+  manual_upi_enabled: boolean;
+  upi_id: string | null;
+  upi_qr_url: string | null;
+  manual_shipping_enabled: boolean;
+  shiprocket_enabled: boolean;
+  shipping_charge: number;
+  free_shipping_threshold: number | null;
+  serviceable_pincodes: string[];
+  created_at: string;
+  updated_at: string;
+};
+
+export type CommerceSettingsInput = Omit<CommerceSettings, "id" | "created_at" | "updated_at">;
+
+export type CommerceOrderItem = {
+  id: string;
+  order_id: string;
+  product_id: string | null;
+  product_name: string;
+  unit_price: number;
+  quantity: number;
+  line_total: number;
+};
+
+export type CommerceOrder = {
+  id: string;
+  order_number: string;
+  customer_name: string;
+  customer_phone: string;
+  address_line1: string;
+  address_line2: string | null;
+  city: string;
+  state: string;
+  pincode: string;
+  subtotal: number;
+  shipping_fee: number;
+  total: number;
+  payment_method: PaymentMethod;
+  payment_status: PaymentStatus;
+  upi_reference: string | null;
+  razorpay_order_id: string | null;
+  razorpay_payment_id: string | null;
+  payment_verified_at: string | null;
+  payment_verified_by: string | null;
+  courier_name: string | null;
+  postage_amount: number | null;
+  tracking_number: string | null;
+  shipped_at: string | null;
+  fulfilment_status: FulfilmentStatus;
+  created_at: string;
+  updated_at: string;
+  items?: CommerceOrderItem[];
+};
 
 export type Category = {
   id: string;
@@ -151,6 +211,24 @@ export type SiteSettingsInput = {
 export type Database = {
   public: {
     Tables: {
+      commerce_settings: {
+        Row: CommerceSettings;
+        Insert: Partial<CommerceSettingsInput> & { id?: string; created_at?: string; updated_at?: string };
+        Update: Partial<CommerceSettingsInput> & { updated_at?: string };
+        Relationships: [];
+      };
+      commerce_orders: {
+        Row: CommerceOrder;
+        Insert: Omit<CommerceOrder, "id" | "order_number" | "created_at" | "updated_at" | "items"> & { id?: string; order_number?: string; created_at?: string; updated_at?: string };
+        Update: Partial<Omit<CommerceOrder, "id" | "order_number" | "created_at" | "items">> & { updated_at?: string };
+        Relationships: [];
+      };
+      commerce_order_items: {
+        Row: CommerceOrderItem;
+        Insert: Omit<CommerceOrderItem, "id"> & { id?: string };
+        Update: Partial<Omit<CommerceOrderItem, "id" | "order_id">>;
+        Relationships: [];
+      };
       site_settings: {
         Row: SiteSettings;
         Insert: SiteSettingsInput & {

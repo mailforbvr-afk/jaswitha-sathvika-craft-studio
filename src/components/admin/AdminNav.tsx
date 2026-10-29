@@ -4,13 +4,15 @@ import Link from "next/link";
 import { BRAND } from "@/lib/config";
 
 type AdminNavProps = {
-  current: "products" | "settings";
+  current: "products" | "settings" | "commerce" | "orders";
   onSignOut: () => void;
 };
 
 const NAV_ITEMS = [
   { href: "/admin", id: "products" as const, label: "Products" },
   { href: "/admin/settings", id: "settings" as const, label: "Site Settings" },
+  { href: "/admin/commerce", id: "commerce" as const, label: "Payments & Shipping" },
+  { href: "/admin/orders", id: "orders" as const, label: "Orders" },
 ];
 
 export function AdminNav({ current, onSignOut }: AdminNavProps) {

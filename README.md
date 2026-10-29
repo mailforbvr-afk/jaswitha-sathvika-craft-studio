@@ -178,6 +178,35 @@ This does **not** need a computer left running. Cloudflare serves the website.
 4. Follow Cloudflare’s DNS steps.
 5. After HTTPS is active, update the website address in `src/app/layout.tsx` (`metadataBase`) if you want sharing previews to use the real domain.
 
+## Payment, shipping and orders
+
+Run `supabase/commerce.sql` once in the Supabase SQL Editor. It adds payment and shipping settings, protected orders, and a secure server-side checkout function without changing products.
+
+Before the settings page can be used, make the existing parent/guardian login an admin. In the SQL Editor, first find its user ID:
+
+```sql
+select id, email from auth.users;
+```
+
+Then add only that user to the admin allow-list:
+
+```sql
+insert into public.admin_users (user_id)
+values ('paste-the-selected-user-id-here');
+```
+
+Open `/admin/commerce` to configure UPI, shipping charges, free-shipping threshold and serviceable pincodes. Open `/admin/orders` to verify manual UPI payments and record courier/tracking updates.
+
+Razorpay is disabled at checkout until all of the following **server-only** Cloudflare Worker secrets are configured:
+
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `RAZORPAY_KEY_ID` (start with a `rzp_test_` key)
+- `RAZORPAY_KEY_SECRET`
+- `RAZORPAY_WEBHOOK_SECRET`
+- `RAZORPAY_TEST_MODE=true`
+
+Create a Razorpay webhook pointing to `/api/razorpay/webhook` and subscribe to payment captured, payment failed and order paid events. Do not enable live keys without a deliberate review. Shiprocket is intentionally not automated in this first version; the admin can book a courier manually and record its tracking number.
+
 ## Useful commands
 
 ```bash

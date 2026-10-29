@@ -6,6 +6,7 @@ import { productDisplayImage } from "@/lib/products";
 import { productWhatsAppUrl } from "@/lib/whatsapp";
 import type { Product } from "@/lib/supabase/types";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { CheckoutPanel } from "@/components/site/CheckoutPanel";
 
 type ProductCardProps = {
   product: Product;
@@ -54,6 +55,7 @@ export function ProductCard({ product, featured = false, studioName = BRAND.stud
         <WhatsAppButton href={productWhatsAppUrl(product, studioName)} className="mt-auto min-h-10 w-full px-3 py-2 text-xs sm:text-sm">
           💬 I&apos;m Interested
         </WhatsAppButton>
+        <CheckoutPanel product={product} />
       </div>
     </article>
   );
